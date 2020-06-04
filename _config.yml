@@ -7,7 +7,7 @@
 # https://learnxinyminutes.com/docs/yaml/
 
 title: Brian Deignan
-description: Data science blog using fastpages.
+description: A data science blog built with fastpages. It's an awesome tool and I encourage you to check it out.
 github_username: bdeignan
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "blog"
@@ -43,13 +43,13 @@ minima:
     github: bdeignan
 
 # Set this to true to get LaTeX math equation support
-use_math: 
+use_math: true
 
 # Set this to true to display the summary of your blog post under your title on the Home page.
 show_description: true
 
 # Set this to true to display image previews on home page, if they exist
-show_image: false
+show_image: true
 
 # Set this to true to display tags on each post
 show_tags: true
