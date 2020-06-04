@@ -12,13 +12,16 @@ First, this blog is built with [fastpages](https://github.com/fastai/fastpages).
 
 {% twitter https://twitter.com/jeremyphoward/status/1232059428238581760?s=20 %}
 
-Outside of this blog, I have a personal website and I wanted them to blend together as seamlessly as (a data scientist like me can make) possible.
+### The problem:
+
+Outside of this blog, I have a personal website and I wanted them to blend together as seamlessly as (a data scientist like me can make) possible. Namely, I wanted to link to an external “about me” page where I keep an updated resume to the "About" page of this fastpages blog.
 
 Luckily, a [fastpages GitHub issue](https://github.com/fastai/fastpages/issues/169) addresses this very thing and one of the primary fastpages contributors already posted some helpful links there. 
 
 But I also like to see concrete examples. So, if you’re the same, then hopefully this helps.
 
-It’s a pretty simple fix. I wanted to link to an external “about me” page where I keep an updated resume. To do this, I removed the “about” markdown file from the `/_posts` directory and replaced it with an html file. This is what the html file looks like:
+### The fix:
+It’s a pretty simple fix. I removed the “about” markdown file from the `/_posts` directory and replaced it with an html file. This is what the new `about.html` file looks like:
 
 ```html
 --- 
@@ -31,7 +34,7 @@ search_exclude: true
 <link rel="canonical" href="https://bdeignan.github.io/about">
 ```
 
-It pretty much follows [one of the links](https://dev.to/steveblue/setup-a-redirect-on-github-pages-1ok7) provided in the issue's comment.
+This pretty much follows [one of the links](https://dev.to/steveblue/setup-a-redirect-on-github-pages-1ok7) provided in the issue's comment.
 
 The main thing you’ll want to change is the URL linked to. Substitute your page for `https://bdeignan.github.io/about` above.
 
