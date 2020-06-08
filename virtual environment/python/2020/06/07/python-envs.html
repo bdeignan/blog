@@ -136,7 +136,7 @@ window.onload = wrap_img;
 
 <p>Who may find this post helpful:</p>
 <ul>
-  <li>Beginner/intermediate Python users</li>
+  <li>Beginner/intermediate Python users who have used virtual environments</li>
   <li>Those who manage their Python projects and environments in a terminal</li>
   <li>Mostly for macOS and Linux users – only brief mention of Windows</li>
   <li>Those who have made a royal mess of their machine’s Python installation before</li>
@@ -147,9 +147,7 @@ window.onload = wrap_img;
 <h3 id="python-virtual-environments">Python virtual environments</h3>
 <p>It would take way too long to list all of the ways I’ve installed and managed Python versions on local and remote machines. I’ve done everything from downloading a zip on Windows machine to <code class="highlighter-rouge">brew install python</code>.</p>
 
-<p>I’ve read dozens of blog posts and opinions on this subject. I still haven’t found one that is exactly what I am looking for: a fast and (relatively) easy way to get started isolating Python projects and their package dependencies.</p>
-
-<p>That’s what this post is for: if you want to easily start using Python for multiple projects – say, pulled from GitHub – and you know enough that you don’t want to pollute your system-wide Python distribution with tons of <code class="highlighter-rouge">pip install</code> commands.</p>
+<p>I’ve read dozens of blog posts and opinions on this subject. I still haven’t found one that is exactly what I was looking for when I started out. That’s what this post is for: if you want to easily start using Python for multiple projects – say, pulled from GitHub – and you know enough that you don’t want to pollute your system-wide Python distribution with tons of <code class="highlighter-rouge">pip install</code> commands.</p>
 
 <p>When I started out using virtual environments, I didn’t really know what they were. Following the conda instructions don’t really elucidate this either. That’s probably my fault for not reading carefully enough. Nevertheless, if you’re like me in the past, then: Python virtual environments are simply directories where Python files are kept. There’s a little more to it than that. I like how <a href="https://towardsdatascience.com/virtual-environments-104c62d48c54">this post</a> explains them in more detail (and lots of cool Doré art).</p>
 
@@ -172,7 +170,7 @@ conda info <span class="nt">--envs</span>
 <p>However, I always faced a few problems using conda:</p>
 <ul>
   <li>What do I name the environment?</li>
-  <li>What <em>did</em> I name the environment I want to activate? I never remembered and always refer to listing out all of my conda environemnts.</li>
+  <li>What <em>did</em> I name the environment I want to activate? I never remembered and always refer to listing out all of my conda environments.</li>
   <li>Will I use it for another project? Maybe. But almost always I did’t end up reusing environments for another project.</li>
 </ul>
 

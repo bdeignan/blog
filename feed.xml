@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://bdeignan.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://bdeignan.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-06-08T00:11:42-05:00</updated><id>https://bdeignan.github.io/blog/feed.xml</id><title type="html">Brian Deignan</title><subtitle>A data science blog built with fastpages. It's an awesome tool and I encourage you to check it out.</subtitle><entry><title type="html">Tools for creating clean Python environments</title><link href="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html" rel="alternate" type="text/html" title="Tools for creating clean Python environments" /><published>2020-06-07T00:00:00-05:00</published><updated>2020-06-07T00:00:00-05:00</updated><id>https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs</id><content type="html" xml:base="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html">&lt;p&gt;&lt;img src=&quot;/blog/images/dirty-env.jpg&quot; alt=&quot;&quot; title=&quot;Don't pollute your development environment!&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://bdeignan.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://bdeignan.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-06-08T00:22:25-05:00</updated><id>https://bdeignan.github.io/blog/feed.xml</id><title type="html">Brian Deignan</title><subtitle>A data science blog built with fastpages. It's an awesome tool and I encourage you to check it out.</subtitle><entry><title type="html">Tools for creating clean Python environments</title><link href="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html" rel="alternate" type="text/html" title="Tools for creating clean Python environments" /><published>2020-06-07T00:00:00-05:00</published><updated>2020-06-07T00:00:00-05:00</updated><id>https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs</id><content type="html" xml:base="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html">&lt;p&gt;&lt;img src=&quot;/blog/images/dirty-env.jpg&quot; alt=&quot;&quot; title=&quot;Don't pollute your development environment!&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;When I was starting out as a data scientist using Python – every other day Googling “python development setup for data science” – conda was the most recommended way to get started. Now, I’ve been programming in Python for the past 3+ years and during that time I have actually moved away from using &lt;a href=&quot;https://docs.conda.io/projects/conda/en/latest/index.html&quot;&gt;conda virtual environments&lt;/a&gt; for my projects. On my journey to conda alternatives, I’ve tried virtualenv, pyenv, Pipenv and most recently Poetry. All these tools overlap in some ways and can be confusing to untangle.&lt;/p&gt;
 
@@ -6,7 +6,7 @@
 
 &lt;p&gt;Who may find this post helpful:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Beginner/intermediate Python users&lt;/li&gt;
+  &lt;li&gt;Beginner/intermediate Python users who have used virtual environments&lt;/li&gt;
   &lt;li&gt;Those who manage their Python projects and environments in a terminal&lt;/li&gt;
   &lt;li&gt;Mostly for macOS and Linux users – only brief mention of Windows&lt;/li&gt;
   &lt;li&gt;Those who have made a royal mess of their machine’s Python installation before&lt;/li&gt;
@@ -17,9 +17,7 @@
 &lt;h3 id=&quot;python-virtual-environments&quot;&gt;Python virtual environments&lt;/h3&gt;
 &lt;p&gt;It would take way too long to list all of the ways I’ve installed and managed Python versions on local and remote machines. I’ve done everything from downloading a zip on Windows machine to &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install python&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;I’ve read dozens of blog posts and opinions on this subject. I still haven’t found one that is exactly what I am looking for: a fast and (relatively) easy way to get started isolating Python projects and their package dependencies.&lt;/p&gt;
-
-&lt;p&gt;That’s what this post is for: if you want to easily start using Python for multiple projects – say, pulled from GitHub – and you know enough that you don’t want to pollute your system-wide Python distribution with tons of &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install&lt;/code&gt; commands.&lt;/p&gt;
+&lt;p&gt;I’ve read dozens of blog posts and opinions on this subject. I still haven’t found one that is exactly what I was looking for when I started out. That’s what this post is for: if you want to easily start using Python for multiple projects – say, pulled from GitHub – and you know enough that you don’t want to pollute your system-wide Python distribution with tons of &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install&lt;/code&gt; commands.&lt;/p&gt;
 
 &lt;p&gt;When I started out using virtual environments, I didn’t really know what they were. Following the conda instructions don’t really elucidate this either. That’s probably my fault for not reading carefully enough. Nevertheless, if you’re like me in the past, then: Python virtual environments are simply directories where Python files are kept. There’s a little more to it than that. I like how &lt;a href=&quot;https://towardsdatascience.com/virtual-environments-104c62d48c54&quot;&gt;this post&lt;/a&gt; explains them in more detail (and lots of cool Doré art).&lt;/p&gt;
 
@@ -42,7 +40,7 @@ conda info &lt;span class=&quot;nt&quot;&gt;--envs&lt;/span&gt;
 &lt;p&gt;However, I always faced a few problems using conda:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;What do I name the environment?&lt;/li&gt;
-  &lt;li&gt;What &lt;em&gt;did&lt;/em&gt; I name the environment I want to activate? I never remembered and always refer to listing out all of my conda environemnts.&lt;/li&gt;
+  &lt;li&gt;What &lt;em&gt;did&lt;/em&gt; I name the environment I want to activate? I never remembered and always refer to listing out all of my conda environments.&lt;/li&gt;
   &lt;li&gt;Will I use it for another project? Maybe. But almost always I did’t end up reusing environments for another project.&lt;/li&gt;
 &lt;/ul&gt;
 
