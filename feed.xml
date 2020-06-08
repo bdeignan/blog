@@ -1,4 +1,158 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://bdeignan.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://bdeignan.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-06-03T22:17:51-05:00</updated><id>https://bdeignan.github.io/blog/feed.xml</id><title type="html">Brian Deignan</title><subtitle>A data science blog built with fastpages. It's an awesome tool and I encourage you to check it out.</subtitle><entry><title type="html">Linking to another website from fastpages</title><link href="https://bdeignan.github.io/blog/fastpages/meta/2020/06/03/fastpages-external-link.html" rel="alternate" type="text/html" title="Linking to another website from fastpages" /><published>2020-06-03T00:00:00-05:00</published><updated>2020-06-03T00:00:00-05:00</updated><id>https://bdeignan.github.io/blog/fastpages/meta/2020/06/03/fastpages-external-link</id><content type="html" xml:base="https://bdeignan.github.io/blog/fastpages/meta/2020/06/03/fastpages-external-link.html">&lt;p&gt;My inaugural post on here is a bit meta and probably unlike most things that I’ll write.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://bdeignan.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://bdeignan.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-06-08T00:11:42-05:00</updated><id>https://bdeignan.github.io/blog/feed.xml</id><title type="html">Brian Deignan</title><subtitle>A data science blog built with fastpages. It's an awesome tool and I encourage you to check it out.</subtitle><entry><title type="html">Tools for creating clean Python environments</title><link href="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html" rel="alternate" type="text/html" title="Tools for creating clean Python environments" /><published>2020-06-07T00:00:00-05:00</published><updated>2020-06-07T00:00:00-05:00</updated><id>https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs</id><content type="html" xml:base="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html">&lt;p&gt;&lt;img src=&quot;/blog/images/dirty-env.jpg&quot; alt=&quot;&quot; title=&quot;Don't pollute your development environment!&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When I was starting out as a data scientist using Python – every other day Googling “python development setup for data science” – conda was the most recommended way to get started. Now, I’ve been programming in Python for the past 3+ years and during that time I have actually moved away from using &lt;a href=&quot;https://docs.conda.io/projects/conda/en/latest/index.html&quot;&gt;conda virtual environments&lt;/a&gt; for my projects. On my journey to conda alternatives, I’ve tried virtualenv, pyenv, Pipenv and most recently Poetry. All these tools overlap in some ways and can be confusing to untangle.&lt;/p&gt;
+
+&lt;p&gt;I want to offer a brief overview of three ways to manage Python virtual environments and describe what I’ve been using lately myself. I’m always learning and changing my mind. So, if I return to using conda, I’ll create an update post with plenty of penance.&lt;/p&gt;
+
+&lt;p&gt;Who may find this post helpful:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Beginner/intermediate Python users&lt;/li&gt;
+  &lt;li&gt;Those who manage their Python projects and environments in a terminal&lt;/li&gt;
+  &lt;li&gt;Mostly for macOS and Linux users – only brief mention of Windows&lt;/li&gt;
+  &lt;li&gt;Those who have made a royal mess of their machine’s Python installation before&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://imgs.xkcd.com/comics/python_environment.png&quot; alt=&quot;&quot; title=&quot;Obligatory xkcd comic: https://xkcd.com/1987/&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;python-virtual-environments&quot;&gt;Python virtual environments&lt;/h3&gt;
+&lt;p&gt;It would take way too long to list all of the ways I’ve installed and managed Python versions on local and remote machines. I’ve done everything from downloading a zip on Windows machine to &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install python&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I’ve read dozens of blog posts and opinions on this subject. I still haven’t found one that is exactly what I am looking for: a fast and (relatively) easy way to get started isolating Python projects and their package dependencies.&lt;/p&gt;
+
+&lt;p&gt;That’s what this post is for: if you want to easily start using Python for multiple projects – say, pulled from GitHub – and you know enough that you don’t want to pollute your system-wide Python distribution with tons of &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install&lt;/code&gt; commands.&lt;/p&gt;
+
+&lt;p&gt;When I started out using virtual environments, I didn’t really know what they were. Following the conda instructions don’t really elucidate this either. That’s probably my fault for not reading carefully enough. Nevertheless, if you’re like me in the past, then: Python virtual environments are simply directories where Python files are kept. There’s a little more to it than that. I like how &lt;a href=&quot;https://towardsdatascience.com/virtual-environments-104c62d48c54&quot;&gt;this post&lt;/a&gt; explains them in more detail (and lots of cool Doré art).&lt;/p&gt;
+
+&lt;p&gt;Now armed with this knowledge, let’s start with a discussion of conda.&lt;/p&gt;
+
+&lt;h3 id=&quot;conda&quot;&gt;Conda&lt;/h3&gt;
+&lt;p&gt;Some basic usage:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# create a new environment&lt;/span&gt;
+conda create &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; myenv
+&lt;span class=&quot;c&quot;&gt;# activate the environment&lt;/span&gt;
+conda activate myenv
+&lt;span class=&quot;c&quot;&gt;# install pandas package in environment&lt;/span&gt;
+conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pandas
+&lt;span class=&quot;c&quot;&gt;# see you environments - trust me you'll need this&lt;/span&gt;
+conda info &lt;span class=&quot;nt&quot;&gt;--envs&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Conda has some great features. You can specify the version of Python you’d like to use when creating a new environment. And environments aren’t tied to a directory; you can activate them anywhere.&lt;/p&gt;
+
+&lt;p&gt;However, I always faced a few problems using conda:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;What do I name the environment?&lt;/li&gt;
+  &lt;li&gt;What &lt;em&gt;did&lt;/em&gt; I name the environment I want to activate? I never remembered and always refer to listing out all of my conda environemnts.&lt;/li&gt;
+  &lt;li&gt;Will I use it for another project? Maybe. But almost always I did’t end up reusing environments for another project.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When installing packages in your conda environment, another problem may soon become apparent. For example, I use the package &lt;a href=&quot;https://pypi.org/project/python-dotenv/&quot;&gt;dotenv&lt;/a&gt; quite a bit. However, &lt;code class=&quot;highlighter-rouge&quot;&gt;conda install python-dotenv&lt;/code&gt; won’t work. That’s because you need to specify the channel – i.e. package repository – on which it can be found. In this case, it’s on &lt;a href=&quot;https://conda-forge.org/&quot;&gt;Conda-Forge&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can find more on channels in &lt;a href=&quot;https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/channels.html&quot;&gt;the documentation&lt;/a&gt;. But suffice it to say, conda doesn’t use &lt;a href=&quot;https://en.wikipedia.org/wiki/Python_Package_Index&quot;&gt;PyPI&lt;/a&gt;, the official repository for third-party packages. This is where pip goes to look for packages when you run &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install pandas&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Another complaint I had with conda comes purely from my personal experience. I could not get it to work across platforms, namely from macOS to Windows. I have colleagues who use Windows. So, when I shared an &lt;code class=&quot;highlighter-rouge&quot;&gt;environment.yml&lt;/code&gt; file with them to recreate my development environment, I was disappointed with how many errors were thrown in the setup process.&lt;/p&gt;
+
+&lt;p&gt;I’ve never actually seen anyone use the yaml files to successfully build an environment moved from macOS to Windows with the command: &lt;code class=&quot;highlighter-rouge&quot;&gt;conda env create -f environment.yml&lt;/code&gt;. They always had to manually install packages the that failed. Inevitably, these packages would then have different versions than mine. And just like that, we’re no longer developing in the same environment. This led me to seek out better options.&lt;/p&gt;
+
+&lt;h3 id=&quot;pipenv&quot;&gt;Pipenv&lt;/h3&gt;
+&lt;p&gt;Some basic usage:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# create environment in current directory&lt;/span&gt;
+pipenv &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# install pandas in environment&lt;/span&gt;
+pipenv &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pandas
+&lt;span class=&quot;c&quot;&gt;# run a script using environment&lt;/span&gt;
+pipenv run python script.py
+&lt;span class=&quot;c&quot;&gt;# activate the environment &lt;/span&gt;
+pipenv shell
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Having had no success with sharing conda environments from macOS to Windows, I decided to experiment with a controversial Python packaging tool – &lt;a href=&quot;https://pipenv.pypa.io/en/latest/&quot;&gt;Pipenv&lt;/a&gt;. For a project at work, I was required to move a Python project from my local Macbook to a secure Windows VDI (please don’t ask me about this experience :] ).&lt;/p&gt;
+
+&lt;p&gt;Despite all the &lt;a href=&quot;https://news.ycombinator.com/item?id=18612590&quot;&gt;derision&lt;/a&gt; directed at it, I was surprised how easily it worked for me. I created a &lt;code class=&quot;highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; for the project that I needed to move. After copying it to the Windows VDI, I just changed into the project directory and ran &lt;code class=&quot;highlighter-rouge&quot;&gt;pipenv install&lt;/code&gt;. And magic! A new environment was created exactly how it was on my local Macbook. I didn’t see any package installation failures. It was so easy that I thought I had stumbled upon some secret Python package management Valhalla. Well, except for all those Pipfile lock errors I kept getting once I needed to install new packages.&lt;/p&gt;
+
+&lt;p&gt;The constant lock errors and the slowness of installing are two of the first pain points I noticed with Pipenv.&lt;/p&gt;
+
+&lt;p&gt;Here’s an example of locking error installing &lt;a href=&quot;https://pypi.org/project/black/&quot;&gt;black&lt;/a&gt; in a Docker container:
+&lt;img src=&quot;/blog/images/piplock-fail.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I saved you an additional 10 lines of error messages in this example, but you get the point. Unfortuanely, the story of Pipenv doesn’t end with a “happily ever after.” Pipenv is controversial for good reasons. I won’t drag it all out here since there is already a &lt;a href=&quot;https://chriswarrick.com/blog/2018/07/17/pipenv-promises-a-lot-delivers-very-little/&quot;&gt;comprehensive post&lt;/a&gt; that does this.&lt;/p&gt;
+
+&lt;p&gt;While Pipenv felt like magic at first, it’s kind of slow, not many people advocate using it in the Python community from what I can tell and I kept seeing those locking errors. Oh, those locking errors. Moreover, as data scientists, machine learning engineers, statisticians – or whatever you call yourself – start using Python more and more, it’s important to learn more about the tools non-data science Python programmers use for packaging, deployment, and managing dependencies. That’s what motivated me to check out the next tool, Poetry.&lt;/p&gt;
+
+&lt;h3 id=&quot;poetry&quot;&gt;Poetry&lt;/h3&gt;
+&lt;p&gt;Some basic usage:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# create a new project and directory called &quot;project&quot;&lt;/span&gt;
+poetry new project
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;project
+&lt;span class=&quot;c&quot;&gt;# install pandas&lt;/span&gt;
+poetry add pandas
+&lt;span class=&quot;c&quot;&gt;# run a python command in environment&lt;/span&gt;
+poetry run python &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# activate environment&lt;/span&gt;
+poetry shell
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Recently, I learned about a new kid on the block in packaging and dependency management: &lt;a href=&quot;https://python-poetry.org/&quot;&gt;Poetry&lt;/a&gt;. It’s a lot like Pipenv but appears to work more smoothly and makes it easy for building packages – which I find myself doing more and more. These days, my Python projects involve writing some source code scripts for a project and importing them like a normal Python module into a Jupyter notebook and using it in data analysis and modeling.&lt;/p&gt;
+
+&lt;p&gt;Poetry automatically sets up a standard Python package repo for you with the &lt;code class=&quot;highlighter-rouge&quot;&gt;poetry new &amp;lt;project-name&amp;gt;&lt;/code&gt; command. It even creates a directory for tests, which you should absolutely be doing for any Python project that spans a substantial amount of lines.&lt;/p&gt;
+
+&lt;p&gt;Poetry has some other cool features that make it &lt;a href=&quot;https://python-poetry.org/docs/libraries/&quot;&gt;easier to publish your Python library&lt;/a&gt; to PyPI. But that’s beyond the scope of this post.&lt;/p&gt;
+
+&lt;div class=&quot;Toast&quot;&gt;
+   &lt;span class=&quot;Toast-icon&quot;&gt;&lt;svg class=&quot;octicon octicon-info&quot; viewBox=&quot;0 0 14 16&quot; version=&quot;1.1&quot; width=&quot;14&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;
+   &lt;span class=&quot;Toast-content&quot;&gt;In my Ubuntu docker container, I had to run &quot;apt-get install python3-venv&quot; to get Poetry to work. This error is raised right away and tells you how to fix it, so it was easy to address.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Poetry is what I’ll be using for now – as a data scientist using Python. That is, until I have to install Tensorflow.&lt;/p&gt;
+
+&lt;h3 id=&quot;faq&quot;&gt;FAQ&lt;/h3&gt;
+&lt;p&gt;What if you want a tool that is not tied to a single directory, or the system’s version of Python, or even Python at all?&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Removing the single directory constraint:
+    &lt;ul&gt;
+      &lt;li&gt;One very relatable gripe of the &lt;a href=&quot;https://chriswarrick.com/blog/2018/07/17/pipenv-promises-a-lot-delivers-very-little/&quot;&gt;post critiquing Pipenv&lt;/a&gt; is: Pipenv and Poetry virtual environments are not easily activated outside of their project’s directory – One way around this is using the “standard tools” Pip and &lt;a href=&quot;https://virtualenv.pypa.io/en/latest/&quot;&gt;virtualenv&lt;/a&gt;.&lt;/li&gt;
+      &lt;li&gt;Also, conda allows you to activate an environment anywhere.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Using multiple versions of Python:
+    &lt;ul&gt;
+      &lt;li&gt;Poetry &lt;a href=&quot;https://python-poetry.org/docs/managing-environments/&quot;&gt;suggests using pyenv&lt;/a&gt; before creating a new environment&lt;/li&gt;
+      &lt;li&gt;Conda does this out-of-the-box&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;On not using Python:
+    &lt;ul&gt;
+      &lt;li&gt;Ok, this is firmly beyond scope of this post now. But in the case that your data science project doesn’t use just Python, then consider conda or whatever popular package manager there is for the programming language.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;I’m beginning to move more towards using Docker, which for the most part, makes virtual environments pointless. That would be a bad way to end this post – to talk about everything but Docker and then end saying that I use Docker. So, I’ll shelve the Docker discussion for another day.&lt;/p&gt;
+
+&lt;p&gt;Where is my current thinking on managing Python environments? Pipenv works across platforms easily. I’ve seen this firsthand. But with the long installation times and constant locking issues, I don’t see a reason to use it over Poetry.&lt;/p&gt;
+
+&lt;p&gt;For me, conda isn’t as useful these days. I don’t currently work on projects with crazy C++ dependencies, or projects that use both R and Python. I haven’t had good experience with conda working across platforms, which is important when you have Windows collaborators or when you want to move a local project to Docker (Oh! I forgot, we’re not talking about Docker). But I might return to conda if it’s the easiest way to install some fancy library or framework I need, like Tensorflow.&lt;/p&gt;
+
+&lt;p&gt;And that’s the main takeaway. Find the best tool for your job. That’s the special sauce data scientists bring to their analysis and modeling. The same goes for creating tidy, reproducible development environments for your projects.&lt;/p&gt;
+
+&lt;h3 id=&quot;bonus-docker-stuff&quot;&gt;Bonus: Docker stuff&lt;/h3&gt;
+&lt;p&gt;Here’s the Dockerfile I used for the Ubuntu container where I tested Pipenv and Poetry.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM ubuntu:latest
+
+RUN apt-get update \
+  &amp;amp;&amp;amp; apt-get install -y python3-pip python3-dev \
+  &amp;amp;&amp;amp; cd /usr/local/bin \
+  &amp;amp;&amp;amp; ln -s /usr/bin/python3 python \
+  &amp;amp;&amp;amp; pip3 install --upgrade pip
+
+ENTRYPOINT [&quot;/bin/bash&quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the same directory as this Dockerfile, build the image: &lt;code class=&quot;highlighter-rouge&quot;&gt;docker build -t test-python-env .&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;And then run a container: &lt;code class=&quot;highlighter-rouge&quot;&gt;docker run -it -p 8888:8888 --name brian-test test-python-env&lt;/code&gt;. In this case, I wanted to test Jupyter notebooks so I binded the host and container 8888 ports.&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://bdeignan.github.io/blog/images/dirty-env.jpg" /><media:content medium="image" url="https://bdeignan.github.io/blog/images/dirty-env.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Linking to another website from fastpages</title><link href="https://bdeignan.github.io/blog/fastpages/meta/2020/06/03/fastpages-external-link.html" rel="alternate" type="text/html" title="Linking to another website from fastpages" /><published>2020-06-03T00:00:00-05:00</published><updated>2020-06-03T00:00:00-05:00</updated><id>https://bdeignan.github.io/blog/fastpages/meta/2020/06/03/fastpages-external-link</id><content type="html" xml:base="https://bdeignan.github.io/blog/fastpages/meta/2020/06/03/fastpages-external-link.html">&lt;p&gt;My inaugural post on here is a bit meta and probably unlike most things that I’ll write.&lt;/p&gt;
 
 &lt;p&gt;First, this blog is built with &lt;a href=&quot;https://github.com/fastai/fastpages&quot;&gt;fastpages&lt;/a&gt;. If you’re like me and work with Jupyter notebooks all the time, then fastpages makes it a breeze to turn them into blog posts. There’s a whole lot more you can do with fastpages mentioned in the Twitter thread below. I love everything fast.ai does, and this tool is no exception.&lt;/p&gt;
 
