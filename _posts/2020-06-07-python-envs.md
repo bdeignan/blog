@@ -13,7 +13,7 @@ When I was starting out as a data scientist using Python – every other day Goo
 I want to offer a brief overview of three ways to manage Python virtual environments and describe what I've been using lately myself. I’m always learning and changing my mind. So, if I return to using conda, I’ll create an update post with plenty of penance.
 
 Who may find this post helpful:
--   Beginner/intermediate Python users
+-   Beginner/intermediate Python users who have used virtual environments
 -   Those who manage their Python projects and environments in a terminal
 -   Mostly for macOS and Linux users – only brief mention of Windows
 - Those who have made a royal mess of their machine's Python installation before
@@ -24,9 +24,7 @@ Who may find this post helpful:
 ### Python virtual environments
 It would take way too long to list all of the ways I’ve installed and managed Python versions on local and remote machines. I’ve done everything from downloading a zip on Windows machine to `brew install python`. 
 
-I’ve read dozens of blog posts and opinions on this subject. I still haven’t found one that is exactly what I am looking for: a fast and (relatively) easy way to get started isolating Python projects and their package dependencies. 
-
-That’s what this post is for: if you want to easily start using Python for multiple projects – say, pulled from GitHub – and you know enough that you don't want to pollute your system-wide Python distribution with tons of `pip install` commands.
+I’ve read dozens of blog posts and opinions on this subject. I still haven’t found one that is exactly what I was looking for when I started out. That’s what this post is for: if you want to easily start using Python for multiple projects – say, pulled from GitHub – and you know enough that you don't want to pollute your system-wide Python distribution with tons of `pip install` commands.
 
 When I started out using virtual environments, I didn’t really know what they were. Following the conda instructions don’t really elucidate this either. That’s probably my fault for not reading carefully enough. Nevertheless, if you’re like me in the past, then: Python virtual environments are simply directories where Python files are kept. There's a little more to it than that. I like how [this post](https://towardsdatascience.com/virtual-environments-104c62d48c54) explains them in more detail (and lots of cool Doré art).
 
@@ -49,7 +47,7 @@ Conda has some great features. You can specify the version of Python you'd like 
 
 However, I always faced a few problems using conda:
 - What do I name the environment?
-- What _did_ I name the environment I want to activate? I never remembered and always refer to listing out all of my conda environemnts.
+- What _did_ I name the environment I want to activate? I never remembered and always refer to listing out all of my conda environments.
 -	Will I use it for another project? Maybe. But almost always I did’t end up reusing environments for another project.
 
 When installing packages in your conda environment, another problem may soon become apparent. For example, I use the package [dotenv](https://pypi.org/project/python-dotenv/) quite a bit. However, `conda install python-dotenv` won't work. That's because you need to specify the channel – i.e. package repository – on which it can be found. In this case, it's on [Conda-Forge](https://conda-forge.org/). 
