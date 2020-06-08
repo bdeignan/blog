@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://bdeignan.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://bdeignan.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-06-08T00:22:25-05:00</updated><id>https://bdeignan.github.io/blog/feed.xml</id><title type="html">Brian Deignan</title><subtitle>A data science blog built with fastpages. It's an awesome tool and I encourage you to check it out.</subtitle><entry><title type="html">Tools for creating clean Python environments</title><link href="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html" rel="alternate" type="text/html" title="Tools for creating clean Python environments" /><published>2020-06-07T00:00:00-05:00</published><updated>2020-06-07T00:00:00-05:00</updated><id>https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs</id><content type="html" xml:base="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html">&lt;p&gt;&lt;img src=&quot;/blog/images/dirty-env.jpg&quot; alt=&quot;&quot; title=&quot;Don't pollute your development environment!&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://bdeignan.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://bdeignan.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-06-08T00:37:28-05:00</updated><id>https://bdeignan.github.io/blog/feed.xml</id><title type="html">Brian Deignan</title><subtitle>A data science blog built with fastpages. It's an awesome tool and I encourage you to check it out.</subtitle><entry><title type="html">Tools for creating clean Python environments</title><link href="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html" rel="alternate" type="text/html" title="Tools for creating clean Python environments" /><published>2020-06-07T00:00:00-05:00</published><updated>2020-06-07T00:00:00-05:00</updated><id>https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs</id><content type="html" xml:base="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html">&lt;p&gt;&lt;img src=&quot;/blog/images/dirty-env.jpg&quot; alt=&quot;&quot; title=&quot;Don't pollute your development environment!&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;When I was starting out as a data scientist using Python – every other day Googling “python development setup for data science” – conda was the most recommended way to get started. Now, I’ve been programming in Python for the past 3+ years and during that time I have actually moved away from using &lt;a href=&quot;https://docs.conda.io/projects/conda/en/latest/index.html&quot;&gt;conda virtual environments&lt;/a&gt; for my projects. On my journey to conda alternatives, I’ve tried virtualenv, pyenv, Pipenv and most recently Poetry. All these tools overlap in some ways and can be confusing to untangle.&lt;/p&gt;
+&lt;p&gt;It would take way too long to list all of the ways I’ve installed and managed Python on local and remote machines. I’ve done everything from downloading a zip on Windows machine to &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install python&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;I want to offer a brief overview of three ways to manage Python virtual environments and describe what I’ve been using lately myself. I’m always learning and changing my mind. So, if I return to using conda, I’ll create an update post with plenty of penance.&lt;/p&gt;
+&lt;p&gt;I’ve read dozens of blog posts and opinions on this subject. I still haven’t found one that is exactly what I was looking for when I started out.&lt;/p&gt;
+
+&lt;p&gt;That’s what this post is for: if you want to easily start using Python for multiple projects – say, pulled from GitHub – and you know enough that you don’t want to pollute your system-wide Python distribution with tons of &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install&lt;/code&gt; commands.&lt;/p&gt;
+
+&lt;p&gt;When I started using virtual environments, I didn’t really know what they were. That’s probably my fault for not reading carefully enough. Nevertheless, if you’re like me in the past, then: Python virtual environments are simply directories where Python files are kept. There’s a little more to it than that. I like how &lt;a href=&quot;https://towardsdatascience.com/virtual-environments-104c62d48c54&quot;&gt;this post&lt;/a&gt; explains them in more detail (and adds in a lot of cool Doré images).&lt;/p&gt;
 
 &lt;p&gt;Who may find this post helpful:&lt;/p&gt;
 &lt;ul&gt;
@@ -12,16 +16,9 @@
   &lt;li&gt;Those who have made a royal mess of their machine’s Python installation before&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;Now, let’s start with a discussion of conda.&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;https://imgs.xkcd.com/comics/python_environment.png&quot; alt=&quot;&quot; title=&quot;Obligatory xkcd comic: https://xkcd.com/1987/&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;python-virtual-environments&quot;&gt;Python virtual environments&lt;/h3&gt;
-&lt;p&gt;It would take way too long to list all of the ways I’ve installed and managed Python versions on local and remote machines. I’ve done everything from downloading a zip on Windows machine to &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install python&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;I’ve read dozens of blog posts and opinions on this subject. I still haven’t found one that is exactly what I was looking for when I started out. That’s what this post is for: if you want to easily start using Python for multiple projects – say, pulled from GitHub – and you know enough that you don’t want to pollute your system-wide Python distribution with tons of &lt;code class=&quot;highlighter-rouge&quot;&gt;pip install&lt;/code&gt; commands.&lt;/p&gt;
-
-&lt;p&gt;When I started out using virtual environments, I didn’t really know what they were. Following the conda instructions don’t really elucidate this either. That’s probably my fault for not reading carefully enough. Nevertheless, if you’re like me in the past, then: Python virtual environments are simply directories where Python files are kept. There’s a little more to it than that. I like how &lt;a href=&quot;https://towardsdatascience.com/virtual-environments-104c62d48c54&quot;&gt;this post&lt;/a&gt; explains them in more detail (and lots of cool Doré art).&lt;/p&gt;
-
-&lt;p&gt;Now armed with this knowledge, let’s start with a discussion of conda.&lt;/p&gt;
 
 &lt;h3 id=&quot;conda&quot;&gt;Conda&lt;/h3&gt;
 &lt;p&gt;Some basic usage:&lt;/p&gt;
@@ -35,7 +32,9 @@ conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pandas
 conda info &lt;span class=&quot;nt&quot;&gt;--envs&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Conda has some great features. You can specify the version of Python you’d like to use when creating a new environment. And environments aren’t tied to a directory; you can activate them anywhere.&lt;/p&gt;
+&lt;p&gt;When I was starting out as a data scientist using Python – every other day Googling “python development setup for data science” – conda was the most recommended way to get started. It’s a natural place to start.&lt;/p&gt;
+
+&lt;p&gt;Conda has some great features. You can specify the version of Python you’d like to use when creating a new environment. And environments aren’t tied to a directory; you can activate them from anywhere.&lt;/p&gt;
 
 &lt;p&gt;However, I always faced a few problems using conda:&lt;/p&gt;
 &lt;ul&gt;
@@ -103,7 +102,16 @@ poetry shell
 
 &lt;p&gt;Poetry is what I’ll be using for now – as a data scientist using Python. That is, until I have to install Tensorflow.&lt;/p&gt;
 
-&lt;h3 id=&quot;faq&quot;&gt;FAQ&lt;/h3&gt;
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;I’m beginning to move more towards using Docker, which for the most part, makes virtual environments pointless. That would be a bad way to end this post – to talk about everything but Docker and then end saying that I use Docker. So, I’ll shelve the Docker discussion for another day.&lt;/p&gt;
+
+&lt;p&gt;Where is my current thinking on managing Python environments? Pipenv works across platforms easily. I’ve seen this firsthand. But with the long installation times and constant locking issues, I don’t see a reason to use it over Poetry.&lt;/p&gt;
+
+&lt;p&gt;For me, conda isn’t as useful these days. I don’t currently work on projects with crazy C++ dependencies, or projects that use both R and Python. I haven’t had good experience with conda working across platforms, which is important when you have Windows collaborators or when you want to move a local project to Docker (Oh! I forgot, we’re not talking about Docker). But I might return to conda if it’s the easiest way to install some fancy library or framework I need, like Tensorflow. If this happens, I’ll create an update post with plenty of penance.&lt;/p&gt;
+
+&lt;p&gt;And that’s the main takeaway. Find the best tool for your job. That’s the special sauce data scientists bring to their analysis and modeling. The same goes for creating tidy, reproducible development environments for your projects.&lt;/p&gt;
+
+&lt;h3 id=&quot;still-need-help-choosing-which-tool-to-use&quot;&gt;Still need help choosing which tool to use?&lt;/h3&gt;
 &lt;p&gt;What if you want a tool that is not tied to a single directory, or the system’s version of Python, or even Python at all?&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Removing the single directory constraint:
@@ -124,15 +132,6 @@ poetry shell
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-&lt;p&gt;I’m beginning to move more towards using Docker, which for the most part, makes virtual environments pointless. That would be a bad way to end this post – to talk about everything but Docker and then end saying that I use Docker. So, I’ll shelve the Docker discussion for another day.&lt;/p&gt;
-
-&lt;p&gt;Where is my current thinking on managing Python environments? Pipenv works across platforms easily. I’ve seen this firsthand. But with the long installation times and constant locking issues, I don’t see a reason to use it over Poetry.&lt;/p&gt;
-
-&lt;p&gt;For me, conda isn’t as useful these days. I don’t currently work on projects with crazy C++ dependencies, or projects that use both R and Python. I haven’t had good experience with conda working across platforms, which is important when you have Windows collaborators or when you want to move a local project to Docker (Oh! I forgot, we’re not talking about Docker). But I might return to conda if it’s the easiest way to install some fancy library or framework I need, like Tensorflow.&lt;/p&gt;
-
-&lt;p&gt;And that’s the main takeaway. Find the best tool for your job. That’s the special sauce data scientists bring to their analysis and modeling. The same goes for creating tidy, reproducible development environments for your projects.&lt;/p&gt;
 
 &lt;h3 id=&quot;bonus-docker-stuff&quot;&gt;Bonus: Docker stuff&lt;/h3&gt;
 &lt;p&gt;Here’s the Dockerfile I used for the Ubuntu container where I tested Pipenv and Poetry.&lt;/p&gt;
