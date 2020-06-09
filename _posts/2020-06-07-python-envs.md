@@ -39,6 +39,8 @@ conda install pandas
 conda info --envs
 ```
 
+[More conda commands here.](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+
 When I was starting out as a data scientist using Python – every other day Googling “python development setup for data science” – conda was the most recommended way to get started. It's a natural place to start.
 
 Conda has some great features. You can specify the version of Python you'd like to use when creating a new environment. And environments aren't tied to a directory; you can activate them from anywhere.
@@ -78,7 +80,7 @@ The constant lock errors and the slowness of installing are two of the first pai
 Here’s an example of locking error installing [black](https://pypi.org/project/black/) in a Docker container:
 ![]({{ site.baseurl }}/images/piplock-fail.png)
 
-I saved you an additional 10 lines of error messages in this example, but you get the point. Unfortuanely, the story of Pipenv doesn’t end with a "happily ever after." Pipenv is controversial for good reasons. I won’t drag it all out here since there is already a [comprehensive post](https://chriswarrick.com/blog/2018/07/17/pipenv-promises-a-lot-delivers-very-little/) that does this. 
+I saved you an additional 10 lines of error messages in this example, but you get the point. Unfortunately, the story of Pipenv doesn’t end with a "happily ever after." Pipenv is controversial for good reasons. I won’t drag it all out here since there is already a [comprehensive post](https://chriswarrick.com/blog/2018/07/17/pipenv-promises-a-lot-delivers-very-little/) that does this. 
 
 While Pipenv felt like magic at first, it’s kind of slow, not many people advocate using it in the Python community from what I can tell and I kept seeing those locking errors. Oh, those locking errors. Moreover, as data scientists, machine learning engineers, statisticians – or whatever you call yourself – start using Python more and more, it’s important to learn more about the tools non-data science Python programmers use for packaging, deployment, and managing dependencies. That's what motivated me to check out the next tool, Poetry.
 
@@ -95,6 +97,8 @@ poetry run python -V
 # activate environment
 poetry shell
 ```
+
+[More Poetry commands here.](https://python-poetry.org/docs/basic-usage/)
 
 Recently, I learned about a new kid on the block in packaging and dependency management: [Poetry](https://python-poetry.org/). It’s a lot like Pipenv but appears to work more smoothly and makes it easy for building packages – which I find myself doing more and more. These days, my Python projects involve writing some source code scripts for a project and importing them like a normal Python module into a Jupyter notebook and using it in data analysis and modeling.
 
