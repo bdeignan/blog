@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://bdeignan.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://bdeignan.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-06-08T00:37:28-05:00</updated><id>https://bdeignan.github.io/blog/feed.xml</id><title type="html">Brian Deignan</title><subtitle>A data science blog built with fastpages. It's an awesome tool and I encourage you to check it out.</subtitle><entry><title type="html">Tools for creating clean Python environments</title><link href="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html" rel="alternate" type="text/html" title="Tools for creating clean Python environments" /><published>2020-06-07T00:00:00-05:00</published><updated>2020-06-07T00:00:00-05:00</updated><id>https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs</id><content type="html" xml:base="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html">&lt;p&gt;&lt;img src=&quot;/blog/images/dirty-env.jpg&quot; alt=&quot;&quot; title=&quot;Don't pollute your development environment!&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://bdeignan.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://bdeignan.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-06-08T19:39:54-05:00</updated><id>https://bdeignan.github.io/blog/feed.xml</id><title type="html">Brian Deignan</title><subtitle>A data science blog built with fastpages. It's an awesome tool and I encourage you to check it out.</subtitle><entry><title type="html">Tools for creating clean Python environments</title><link href="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html" rel="alternate" type="text/html" title="Tools for creating clean Python environments" /><published>2020-06-07T00:00:00-05:00</published><updated>2020-06-07T00:00:00-05:00</updated><id>https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs</id><content type="html" xml:base="https://bdeignan.github.io/blog/virtual%20environment/python/2020/06/07/python-envs.html">&lt;p&gt;&lt;img src=&quot;/blog/images/dirty-env.jpg&quot; alt=&quot;&quot; title=&quot;Don't pollute your development environment!&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;It would take way too long to list all of the ways I’ve installed and managed Python on local and remote machines. I’ve done everything from downloading a zip on Windows machine to &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install python&lt;/code&gt;.&lt;/p&gt;
 
@@ -31,6 +31,8 @@ conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pandas
 &lt;span class=&quot;c&quot;&gt;# see you environments - trust me you'll need this&lt;/span&gt;
 conda info &lt;span class=&quot;nt&quot;&gt;--envs&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html&quot;&gt;More conda commands here.&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;When I was starting out as a data scientist using Python – every other day Googling “python development setup for data science” – conda was the most recommended way to get started. It’s a natural place to start.&lt;/p&gt;
 
@@ -72,7 +74,7 @@ pipenv shell
 &lt;p&gt;Here’s an example of locking error installing &lt;a href=&quot;https://pypi.org/project/black/&quot;&gt;black&lt;/a&gt; in a Docker container:
 &lt;img src=&quot;/blog/images/piplock-fail.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;I saved you an additional 10 lines of error messages in this example, but you get the point. Unfortuanely, the story of Pipenv doesn’t end with a “happily ever after.” Pipenv is controversial for good reasons. I won’t drag it all out here since there is already a &lt;a href=&quot;https://chriswarrick.com/blog/2018/07/17/pipenv-promises-a-lot-delivers-very-little/&quot;&gt;comprehensive post&lt;/a&gt; that does this.&lt;/p&gt;
+&lt;p&gt;I saved you an additional 10 lines of error messages in this example, but you get the point. Unfortunately, the story of Pipenv doesn’t end with a “happily ever after.” Pipenv is controversial for good reasons. I won’t drag it all out here since there is already a &lt;a href=&quot;https://chriswarrick.com/blog/2018/07/17/pipenv-promises-a-lot-delivers-very-little/&quot;&gt;comprehensive post&lt;/a&gt; that does this.&lt;/p&gt;
 
 &lt;p&gt;While Pipenv felt like magic at first, it’s kind of slow, not many people advocate using it in the Python community from what I can tell and I kept seeing those locking errors. Oh, those locking errors. Moreover, as data scientists, machine learning engineers, statisticians – or whatever you call yourself – start using Python more and more, it’s important to learn more about the tools non-data science Python programmers use for packaging, deployment, and managing dependencies. That’s what motivated me to check out the next tool, Poetry.&lt;/p&gt;
 
@@ -88,6 +90,8 @@ poetry run python &lt;span class=&quot;nt&quot;&gt;-V&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# activate environment&lt;/span&gt;
 poetry shell
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://python-poetry.org/docs/basic-usage/&quot;&gt;More Poetry commands here.&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Recently, I learned about a new kid on the block in packaging and dependency management: &lt;a href=&quot;https://python-poetry.org/&quot;&gt;Poetry&lt;/a&gt;. It’s a lot like Pipenv but appears to work more smoothly and makes it easy for building packages – which I find myself doing more and more. These days, my Python projects involve writing some source code scripts for a project and importing them like a normal Python module into a Jupyter notebook and using it in data analysis and modeling.&lt;/p&gt;
 

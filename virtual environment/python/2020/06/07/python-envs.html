@@ -162,6 +162,8 @@ conda <span class="nb">install </span>pandas
 conda info <span class="nt">--envs</span>
 </code></pre></div></div>
 
+<p><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">More conda commands here.</a></p>
+
 <p>When I was starting out as a data scientist using Python – every other day Googling “python development setup for data science” – conda was the most recommended way to get started. It’s a natural place to start.</p>
 
 <p>Conda has some great features. You can specify the version of Python you’d like to use when creating a new environment. And environments aren’t tied to a directory; you can activate them from anywhere.</p>
@@ -202,7 +204,7 @@ pipenv shell
 <p>Here’s an example of locking error installing <a href="https://pypi.org/project/black/">black</a> in a Docker container:
 <img src="/blog/images/piplock-fail.png" alt="" /></p>
 
-<p>I saved you an additional 10 lines of error messages in this example, but you get the point. Unfortuanely, the story of Pipenv doesn’t end with a “happily ever after.” Pipenv is controversial for good reasons. I won’t drag it all out here since there is already a <a href="https://chriswarrick.com/blog/2018/07/17/pipenv-promises-a-lot-delivers-very-little/">comprehensive post</a> that does this.</p>
+<p>I saved you an additional 10 lines of error messages in this example, but you get the point. Unfortunately, the story of Pipenv doesn’t end with a “happily ever after.” Pipenv is controversial for good reasons. I won’t drag it all out here since there is already a <a href="https://chriswarrick.com/blog/2018/07/17/pipenv-promises-a-lot-delivers-very-little/">comprehensive post</a> that does this.</p>
 
 <p>While Pipenv felt like magic at first, it’s kind of slow, not many people advocate using it in the Python community from what I can tell and I kept seeing those locking errors. Oh, those locking errors. Moreover, as data scientists, machine learning engineers, statisticians – or whatever you call yourself – start using Python more and more, it’s important to learn more about the tools non-data science Python programmers use for packaging, deployment, and managing dependencies. That’s what motivated me to check out the next tool, Poetry.</p>
 
@@ -218,6 +220,8 @@ poetry run python <span class="nt">-V</span>
 <span class="c"># activate environment</span>
 poetry shell
 </code></pre></div></div>
+
+<p><a href="https://python-poetry.org/docs/basic-usage/">More Poetry commands here.</a></p>
 
 <p>Recently, I learned about a new kid on the block in packaging and dependency management: <a href="https://python-poetry.org/">Poetry</a>. It’s a lot like Pipenv but appears to work more smoothly and makes it easy for building packages – which I find myself doing more and more. These days, my Python projects involve writing some source code scripts for a project and importing them like a normal Python module into a Jupyter notebook and using it in data analysis and modeling.</p>
 
